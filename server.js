@@ -10,9 +10,6 @@ var botConnectorOptions = {
     appSecret: process.env.BOTFRAMEWORK_APPSECRET
 };
 
-
-console.log(caniuse.find("shodow"));
-
 // Create bot
 var bot = new builder.BotConnectorBot(botConnectorOptions);
 
