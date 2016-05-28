@@ -21,12 +21,15 @@ bot.add('/', [
 
         // 検索して候補を取得
         console.log(session.message.text);
-        var search_res = caniuse.find(query);
+        var search_res = caniuse.find(query); // ヒット数が複数or0の場合、配列が。1つだけヒットの場合、文字型が返される。
 
         console.log(search_res);
+        console.log(Array.isArray(search_res));
+        console.log("\nlengh:"+search_res.length);
+
 
         // 候補の数を調べる
-        if (search_res.length == 1) {
+        if ( search_res.length == 1 || Array.isArray(search_res) == false ) {
 
             // ****候補が1つだけの時****
 
