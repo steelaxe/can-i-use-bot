@@ -1,0 +1,17 @@
+{
+    "name": "can-i-use-bot",
+    "version": "0.0.1",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "steelaxe",
+    "license": "MIT",
+    "dependencies": {
+        "botbuilder": "*",
+        "restify": "*",
+        "caniuse-api": "*"
+    },
+    "private": true
+}
