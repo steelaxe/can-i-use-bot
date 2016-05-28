@@ -17,40 +17,44 @@ bot.add('/', [
     function (session) {
 
         var query = session.message.text;
-        var seach_flag, res;
 
-        // 受け取った文字列でCan I useのデータを取得
-        try {
-            res = caniuse.getSupport(query, true); //ヒットしないとエラーを投げてくる
-        } catch (e) {
-            seach_flag = 1;
-        }
 
-        // 完全一致するかどうか判定
-        if (seach_flag == false) {
+        // 検索して候補を取得
+        console.log(session.message.text);
+        var search_res = caniuse.find(query);
+
+        console.log(search_res);
+
+        // 候補の数を調べる
+        if (search_res.length == 1) {
+
+            // ****候補が1つだけの時****
 
             // Can I useの結果を表示
+            var res = caniuse.getSupport(query, true);
             console.log(res);
             session.endDialog(JSON.stringify(res));
 
+
+        } else if (search_res.length >= 2) {
+
+            // ****候補が複数ある時****
+
+            // 候補を表示。選択肢を提示
+            console.log(search_res);
+            builder.Prompts.choice(session, "pick one.", search_res);
+
         } else {
 
-            // 検索して候補を取得
-            var search_res = caniuse.find(query);
+            // ****候補が0の時****
 
-            if (search_res.length > 0) {
+            // 見つかりませんでした... XP
+            session.endDialog("sorry, not found.");
 
-                // 候補を表示。選択肢を提示
-                console.log(search_res);
-                builder.Prompts.choice(session, "pick one.", search_res);
-
-            } else {
-                // 見つかりませんでした... XP
-                session.endDialog("sorry, not found.");
-            }
         }
 
-},function (session, results) {
+},
+    function (session, results) {
 
         var res = caniuse.getSupport(results.response.entity, true);
 
