@@ -110,7 +110,13 @@ function result_format(session, query, obj) {
 bot.add('/', [
     function (session) {
 
+        // クエリーを成型
         var query = session.message.text.replace(/^@\w+:\s+/, "").replace(/\s/g, "");
+
+        // クエリーの文字数が3字以下ならばエラー
+        if(query.length < 3){
+            session.endDialog("Plz enter more than 3 characters! XP");
+        }
 
         // 検索して候補を取得
         console.log(session.message.text);
@@ -146,7 +152,7 @@ bot.add('/', [
             // ****候補が0の時****
 
             // 見つかりませんでした... XP
-            session.endDialog("sorry, not found.");
+            session.endDialog("sorry, not found... XP");
 
         }
 
