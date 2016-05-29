@@ -108,7 +108,7 @@ function result_format(query, obj) {
 bot.add('/', [
     function (session) {
 
-        var query = session.message.text.replace(/^@\w+:\s/, "");
+        var query = session.message.text.replace(/^@\w+:\s+/, "");
 
         //session.send(query);
 
@@ -120,7 +120,7 @@ bot.add('/', [
         console.log(Array.isArray(search_res));
         console.log("\nlengh:" + search_res.length);
 
-        session.send("query:"+query + ", search_res:"+search_res.toString() );
+        session.send("query:"+query + ", search_res:"+search_res );
 
 
         // 候補の数を調べる
