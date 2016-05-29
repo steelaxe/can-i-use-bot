@@ -14,14 +14,6 @@ var botConnectorOptions = {
 var bot = new builder.BotConnectorBot(botConnectorOptions);
 
 
-// caniuse-api test
-console.log(caniuse.getBrowserScope());
-
-caniuse.setBrowserScope('> 5%, last 2 versions, Firefox ESR, Opera 12.1');
-
-
-console.log(caniuse);
-
 // ************************************************
 
 
@@ -92,7 +84,7 @@ function result_format(query, obj) {
         }
     }
 
-    console.log(result_text);
+    //console.log(result_text);
     //return result_text;
 
     var msg = new builder.Message().addAttachment({
@@ -100,11 +92,15 @@ function result_format(query, obj) {
                 "title": query,
                 "TitleLink": "http://caniuse.com/#search="+query
     });
-    rertun msg;
+
+    console.log("Message with attachments:");
+    console.log(msg);
+
+    return msg;
 
 }
 
-result_format(test);
+//result_format(test);
 
 // ************************************************
 
@@ -131,7 +127,7 @@ bot.add('/', [
 
             // Can I useの結果を表示
             var res = caniuse.getSupport(query, true);
-            console.log(res);
+//            console.log(res);
             session.endDialog( result_format(query, res) );
 
 
@@ -140,7 +136,7 @@ bot.add('/', [
             // ****候補が複数ある時****
 
             // 候補を表示。選択肢を提示
-            console.log(search_res);
+//            console.log(search_res);
             builder.Prompts.choice(session, "pick one.", search_res);
 
         } else {
@@ -158,7 +154,7 @@ bot.add('/', [
         var res = caniuse.getSupport(results.response.entity, true);
 
         // Can I useの結果を表示
-        console.log(res);
+//        console.log(res);
         session.endDialog( result_format(results.response.entity, res) );
 
 }]);
