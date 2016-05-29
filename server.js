@@ -108,7 +108,7 @@ function result_format(query, obj) {
 bot.add('/', [
     function (session) {
 
-        var query = session.message.text;
+        var query = session.message.text.replace(/^@\w+:\s/, "");
 
 
         // 検索して候補を取得
