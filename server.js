@@ -120,7 +120,7 @@ bot.add('/', [
         console.log(Array.isArray(search_res));
         console.log("\nlengh:" + search_res.length);
 
-        session.send(query + search_res.toString() );
+        session.send("query:"+query + ", search_res:"+search_res.toString() );
 
 
         // 候補の数を調べる
