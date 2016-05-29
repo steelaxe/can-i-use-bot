@@ -1,7 +1,6 @@
 Can I use? bot
 ==========
 This is a Slack integration which enables you to check browser support without visiting caniuse website.
-==========
 
 Demo
 --------
