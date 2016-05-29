@@ -136,7 +136,7 @@ bot.add('/', [
                 "ts": 123456789
 
             });
-            session.endDialog(msg);
+            session.send(msg);
 
         }
 
