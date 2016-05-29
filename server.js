@@ -74,19 +74,18 @@ var test = {
     }
 };
 
-function result_format(obj) {
+function result_format(query, obj) {
 
     var result_text;
-
 
     for (var key in obj) {
         if (obj.hasOwnProperty(key)) {
 
             console.log(key);
-            result_text += "##" + key + "\n";
+            result_text += key+"\n";
 
             var value = obj[key];
-            result_text += JSON.stringify(obj[key]) + "\n";
+            result_text += JSON.stringify(obj[key])+"\n";
 
             console.log(value);
 
@@ -94,7 +93,13 @@ function result_format(obj) {
     }
 
     console.log(result_text);
-    return result_text;
+    //return result_text;
+
+    rertun var msg = new builder.Message().addAttachment({
+                "text": result_text,
+                "title": query,
+                "TitleLink": "http://caniuse.com/#search="+query
+    });
 
 }
 
@@ -107,40 +112,6 @@ bot.add('/', [
     function (session) {
 
         var query = session.message.text;
-
-        // Slackアタッチメントのテスト
-        if (query == "test") {
-
-            var msg = new builder.Message().addAttachment({
-                "text": "I am a test message http://slack.com",
-                "attachments": [
-                    {
-                        "fallback": "Required plain-text summary of the attachment.",
-                        "color": "#36a64f",
-                        "pretext": "Optional text that appears above the attachment block",
-                        "author_name": "Bobby Tables",
-                        "author_link": "http://flickr.com/bobby/",
-                        "author_icon": "http://flickr.com/icons/bobby.jpg",
-                        "title": "Slack API Documentation",
-                        "title_link": "https://api.slack.com/",
-                        "text": "Optional text that appears within the attachment",
-                        "fields": [
-                            {
-                                "title": "Priority",
-                                "value": "High",
-                                "short": false
-                    }
-                ],
-                        "image_url": "http://my-website.com/path/to/image.jpg",
-                        "thumb_url": "http://example.com/path/to/thumb.png",
-                        "footer": "Slack API",
-                        "footer_icon": "https://platform.slack-edge.com/img/default_application_icon.png",
-                        "ts": 123456789
-                    }]
-            });
-            session.send(msg);
-
-        }
 
 
         // 検索して候補を取得
@@ -160,7 +131,7 @@ bot.add('/', [
             // Can I useの結果を表示
             var res = caniuse.getSupport(query, true);
             console.log(res);
-            session.endDialog(result_format(res));
+            session.endDialog( result_format(query, res) );
 
 
         } else if (search_res.length >= 2) {
@@ -187,7 +158,7 @@ bot.add('/', [
 
         // Can I useの結果を表示
         console.log(res);
-        session.endDialog(result_format(res));
+        session.endDialog( result_format(results.response.entity, res) );
 
 }]);
 
