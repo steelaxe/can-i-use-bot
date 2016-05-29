@@ -108,7 +108,7 @@ function result_format(query, obj) {
 bot.add('/', [
     function (session) {
 
-        var query = session.message.text.replace(/^@\w+:\s+/, "");
+        var query = session.message.text.replace(/^@\w+:\s+/, "").replace(/\s/g, "");
 
         //session.send(query);
 
