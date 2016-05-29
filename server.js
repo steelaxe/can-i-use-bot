@@ -66,7 +66,7 @@ var test = {
     }
 };
 
-function result_format(query, obj) {
+function result_format(session, query, obj) {
 
     var result_text;
 
@@ -74,10 +74,10 @@ function result_format(query, obj) {
         if (obj.hasOwnProperty(key)) {
 
             console.log(key);
-            result_text += key+"\n";
+            result_text += key + "\n";
 
             var value = obj[key];
-            result_text += JSON.stringify(obj[key])+"\n";
+            result_text += JSON.stringify(obj[key]) + "\n";
 
             console.log(value);
 
@@ -87,11 +87,13 @@ function result_format(query, obj) {
     //console.log(result_text);
     //return result_text;
 
-    var msg = new builder.Message().addAttachment({
-                "text": result_text,
-                "title": query,
-                "TitleLink": "http://caniuse.com/#search="+query
-    });
+    var msg = new builder.Message()
+        .setText(session, result_text)
+        .addAttachment({
+            "text": "more information here.",
+            "title": query,
+            "TitleLink": "http://caniuse.com/#search=" + query
+        });
 
     console.log("Message with attachments:");
     console.log(msg);
@@ -110,8 +112,6 @@ bot.add('/', [
 
         var query = session.message.text.replace(/^@\w+:\s+/, "").replace(/\s/g, "");
 
-        //session.send(query);
-
         // 検索して候補を取得
         console.log(session.message.text);
         var search_res = caniuse.find(query); // ヒット数が複数or0の場合、配列が。1つだけヒットの場合、文字型が返される。
@@ -120,8 +120,8 @@ bot.add('/', [
         console.log(Array.isArray(search_res));
         console.log("\nlengh:" + search_res.length);
 
-        session.send("query:"+query + ", search_res:"+search_res );
-
+        //debug用
+        //session.send("query:"+query + ", search_res:"+search_res );
 
         // 候補の数を調べる
         if (Array.isArray(search_res) === false) {
@@ -130,8 +130,7 @@ bot.add('/', [
 
             // Can I useの結果を表示
             var res = caniuse.getSupport(query, true);
-//            console.log(res);
-            session.endDialog( result_format(query, res) );
+            session.endDialog(result_format(session, query, res));
 
 
         } else if (search_res.length >= 2) {
@@ -139,7 +138,7 @@ bot.add('/', [
             // ****候補が複数ある時****
 
             // 候補を表示。選択肢を提示
-//            console.log(search_res);
+            //            console.log(search_res);
             builder.Prompts.choice(session, "pick one.", search_res);
 
         } else {
@@ -157,8 +156,8 @@ bot.add('/', [
         var res = caniuse.getSupport(results.response.entity, true);
 
         // Can I useの結果を表示
-//        console.log(res);
-        session.endDialog( result_format(results.response.entity, res) );
+        //        console.log(res);
+        session.endDialog(result_format(session, results.response.entity, res));
 
 }]);
 
