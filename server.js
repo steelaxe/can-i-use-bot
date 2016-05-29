@@ -110,7 +110,7 @@ bot.add('/', [
 
         var query = session.message.text.replace(/^@\w+:\s/, "");
 
-        session.send(query);
+        //session.send(query);
 
         // 検索して候補を取得
         console.log(session.message.text);
