@@ -16,56 +16,6 @@ var bot = new builder.BotConnectorBot(botConnectorOptions);
 
 // ************************************************
 
-
-var test = {
-    "and_chr": {
-        "y": 50
-    },
-    "and_uc": {
-        "n": 9.9
-    },
-    "android": {
-        "n": 4.4,
-        "y": 50
-    },
-    "chrome": {
-        "n": 9,
-        "y": 10,
-        "x": 33
-    },
-    "edge": {
-        "y": 12
-    },
-    "firefox": {
-        "n": 24,
-        "y": 25
-    },
-    "ie": {
-        "n": 11
-    },
-    "ie_mob": {
-        "n": 11
-    },
-    "ios_saf": {
-        "y": 6,
-        "x": 9.3,
-        "n": 5
-    },
-    "op_mini": {
-        "n": 5
-    },
-    "opera": {
-        "n": 12.1,
-        "y": 15,
-        "x": 21
-    },
-    "safari": {
-        "n": 5.1,
-        "y": 6,
-        "x": 9.1
-    }
-};
-
 function result_format(session, query, obj) {
 
     var result_text = "Support information\n\n";

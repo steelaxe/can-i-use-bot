@@ -1,0 +1,64 @@
+.WelcomeSection {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.WelcomeSection-heading {
+    font-size: 8rem;
+}
+.WelcomeSection-lead{
+    font-size: 2rem;
+    color: #7c7c7c;
+}
+
+.DemoSection {
+    text-align: center;
+    background-color: #DB5600;
+    padding: 40px 0;
+}
+
+.DemoSection-movie {
+    border-radius: 10px;
+}
+
+.AddSection {
+    text-align: center;
+    background-color: #39b54a;
+    padding: 40px 0 60px 0;
+    color: #fff;
+}
+.AddSection-heading{
+    margin-bottom: 40px;
+    font-size: 5rem;
+}
+
+
+.WebChatSection{
+    text-align: center;
+    background-color: #f2e8d5;
+    padding: 40px 0;
+    color: #835f48;
+}
+.WebChatSection-heading{
+    font-size: 3.5rem;
+    margin-bottom: 49px;
+}
+.WebChatSection-message{
+    font-size: 2rem;
+    margin: 40px 0;
+}
+
+
+.Footer{
+    background-color: #3e92d2;
+    color: #fff;
+    text-align: center;
+    padding: 40px 0;
+}
+.Footer a{
+    color: #fff;
+    text-decoration: underline;
+}
+.Footer-profile{
+    margin-bottom: 40px;
+}
