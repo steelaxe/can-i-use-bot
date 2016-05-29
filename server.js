@@ -74,10 +74,10 @@ function result_format(session, query, obj) {
         if (obj.hasOwnProperty(key)) {
 
             console.log(key);
-            result_text += key + "\n";
+            result_text += key + "\n\n";
 
             var value = obj[key];
-            result_text += JSON.stringify(obj[key]) + "\n";
+            result_text += JSON.stringify(obj[key]) + "\n\n";
 
             console.log(value);
 
@@ -91,7 +91,7 @@ function result_format(session, query, obj) {
         .setText(session, result_text)
         .addAttachment({
             "text": "more information here.",
-            "title": query,
+            "title": query + " - Can I use?",
             "TitleLink": "http://caniuse.com/#search=" + query
         });
 
