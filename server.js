@@ -25,9 +25,9 @@ function result_format(session, query, obj) {
         if (obj.hasOwnProperty(key)) {
 
             if( 'y' in obj[key] ){
-                result_text += key + ": >= " + obj[key].y +"\n\n";
+                result_text += browser_name_from_key(key) + ": >= " + obj[key].y +"\n\n";
             }else if( 'a' in obj[key] ){
-                result_text += key + ": " + obj[key].a +" (Partial support)\n\n";
+                result_text += browser_name_from_key(key) + ": " + obj[key].a +" (Partial support)\n\n";
             }
 
         }
@@ -50,6 +50,30 @@ function result_format(session, query, obj) {
 }
 
 //result_format(test);
+
+// ************************************************
+
+var browsers_names = {
+    "and_chr": "Chrome for Android​",
+    "and_ff": "Firefox for Android​",
+    "and_uc": "UC Browser for Android​",
+    "android": "Android Browser",
+    "bb": "Blackberry Browser​",
+    "chrome": "Chrome​",
+    "edge": "Edge",
+    "firefox": "Firefox​",
+    "ie_mob": "IE Mobile​",
+    "ie": "IE​",
+    "ios_saf": "iOS Safari",
+    "op_mini": "Opera Mini",
+    "op_mob": "Opera Mobile",
+    "opera": "Opera​",
+    "safari": "Safari​"
+};
+
+function browser_name_from_key(key) {
+    return browsers_names[key] || key;
+}
 
 // ************************************************
 
