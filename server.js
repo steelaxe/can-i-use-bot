@@ -120,9 +120,11 @@ bot.add('/', [
         console.log(Array.isArray(search_res));
         console.log("\nlengh:" + search_res.length);
 
+        session.send(query + search_res.toString() );
+
 
         // 候補の数を調べる
-        if (search_res.length == 1 || Array.isArray(search_res) == false) {
+        if (Array.isArray(search_res) === false) {
 
             // ****候補が1つだけの時****
 
