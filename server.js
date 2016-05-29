@@ -68,25 +68,22 @@ var test = {
 
 function result_format(session, query, obj) {
 
-    var result_text;
+    var result_text = "Support information\n\n";
 
+    // 結果テキストを作成
     for (var key in obj) {
         if (obj.hasOwnProperty(key)) {
 
-            console.log(key);
-            result_text += key + "\n\n";
-
-            var value = obj[key];
-            result_text += JSON.stringify(obj[key]) + "\n\n";
-
-            console.log(value);
+            if( 'y' in obj[key] ){
+                result_text += key + ": >= " + obj[key].y +"\n\n";
+            }else if( 'a' in obj[key] ){
+                result_text += key + ": " + obj[key].a +" (Partial support)\n\n";
+            }
 
         }
     }
 
-    //console.log(result_text);
-    //return result_text;
-
+    // Message作成
     var msg = new builder.Message()
         .setText(session, result_text)
         .addAttachment({
