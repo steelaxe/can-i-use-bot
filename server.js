@@ -13,6 +13,96 @@ var botConnectorOptions = {
 // Create bot
 var bot = new builder.BotConnectorBot(botConnectorOptions);
 
+
+// caniuse-api test
+console.log(caniuse.getBrowserScope());
+
+caniuse.setBrowserScope('> 5%, last 2 versions, Firefox ESR, Opera 12.1');
+
+
+console.log(caniuse);
+
+// ************************************************
+
+
+var test = {
+    "and_chr": {
+        "y": 50
+    },
+    "and_uc": {
+        "n": 9.9
+    },
+    "android": {
+        "n": 4.4,
+        "y": 50
+    },
+    "chrome": {
+        "n": 9,
+        "y": 10,
+        "x": 33
+    },
+    "edge": {
+        "y": 12
+    },
+    "firefox": {
+        "n": 24,
+        "y": 25
+    },
+    "ie": {
+        "n": 11
+    },
+    "ie_mob": {
+        "n": 11
+    },
+    "ios_saf": {
+        "y": 6,
+        "x": 9.3,
+        "n": 5
+    },
+    "op_mini": {
+        "n": 5
+    },
+    "opera": {
+        "n": 12.1,
+        "y": 15,
+        "x": 21
+    },
+    "safari": {
+        "n": 5.1,
+        "y": 6,
+        "x": 9.1
+    }
+};
+
+function result_format(obj) {
+
+    var result_text;
+
+
+    for (var key in obj) {
+        if (obj.hasOwnProperty(key)) {
+
+            console.log(key);
+            result_text += "##"+key+"\n";
+
+            var value = obj[key];
+            result_text += JSON.stringify(obj[key])+"\n";
+
+            console.log(value);
+
+        }
+    }
+
+    console.log(result_text);
+    return result_text;
+
+}
+
+result_format(test);
+
+// ************************************************
+
+
 bot.add('/', [
     function (session) {
 
@@ -25,18 +115,18 @@ bot.add('/', [
 
         console.log(search_res);
         console.log(Array.isArray(search_res));
-        console.log("\nlengh:"+search_res.length);
+        console.log("\nlengh:" + search_res.length);
 
 
         // 候補の数を調べる
-        if ( search_res.length == 1 || Array.isArray(search_res) == false ) {
+        if (search_res.length == 1 || Array.isArray(search_res) == false) {
 
             // ****候補が1つだけの時****
 
             // Can I useの結果を表示
             var res = caniuse.getSupport(query, true);
             console.log(res);
-            session.endDialog(JSON.stringify(res));
+            session.endDialog(result_format(res));
 
 
         } else if (search_res.length >= 2) {
@@ -63,7 +153,7 @@ bot.add('/', [
 
         // Can I useの結果を表示
         console.log(res);
-        session.endDialog(JSON.stringify(res));
+        session.endDialog(result_format(res));
 
 }]);
 
