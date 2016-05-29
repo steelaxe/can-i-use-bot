@@ -95,11 +95,12 @@ function result_format(query, obj) {
     console.log(result_text);
     //return result_text;
 
-    rertun var msg = new builder.Message().addAttachment({
+    var msg = new builder.Message().addAttachment({
                 "text": result_text,
                 "title": query,
                 "TitleLink": "http://caniuse.com/#search="+query
     });
+    rertun msg;
 
 }
 
