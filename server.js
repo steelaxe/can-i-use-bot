@@ -1,6 +1,6 @@
 var restify = require('restify');
 var builder = require('botbuilder');
-var caniuse = require('caniuse-api')
+var caniuse = require('caniuse-query')
 
 // ************************************************
 
@@ -41,9 +41,6 @@ function result_format(session, query, obj) {
             "title": query + " - Can I use?",
             "TitleLink": "http://caniuse.com/#search=" + query
         });
-
-    console.log("Message with attachments:");
-    console.log(msg);
 
     return msg;
 
@@ -90,24 +87,19 @@ bot.add('/', [
         }
 
         // 検索して候補を取得
-        console.log(session.message.text);
         var search_res = caniuse.find(query); // ヒット数が複数or0の場合、配列が。1つだけヒットの場合、文字型が返される。
-
-        console.log(search_res);
-        console.log(Array.isArray(search_res));
-        console.log("\nlengh:" + search_res.length);
 
         //debug用
         //session.send("query:"+query + ", search_res:"+search_res );
 
         // 候補の数を調べる
-        if (Array.isArray(search_res) === false) {
+        if (search_res.length == 1) {
 
             // ****候補が1つだけの時****
 
             // Can I useの結果を表示
             var res = caniuse.getSupport(query, true);
-            session.endDialog(result_format(session, query, res));
+            session.endDialog(result_format(session, search_res[0], res));
 
 
         } else if (search_res.length >= 2) {
