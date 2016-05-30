@@ -77,7 +77,7 @@ bot.add('/', [
         //session.send("query:"+query + ", search_res:"+search_res );
 
         // 候補の数を調べる
-        if (Array.isArray(search_res) === false) {
+        if (search_res.length == 1) {
 
             // ****候補が1つだけの時****
 
