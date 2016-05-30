@@ -11,7 +11,7 @@
     "dependencies": {
         "botbuilder": "*",
         "restify": "*",
-        "caniuse-api": "*"
+        "caniuse-query": "*"
     },
     "private": true
 }

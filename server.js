@@ -1,6 +1,6 @@
 var restify = require('restify');
 var builder = require('botbuilder');
-var caniuse = require('caniuse-api')
+var caniuse = require('caniuse-query')
 
 // ************************************************
 
