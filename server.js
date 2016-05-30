@@ -18,7 +18,7 @@ var bot = new builder.BotConnectorBot(botConnectorOptions);
 
 function result_format(session, query, obj) {
 
-    var result_text = "Support information\n\n";
+    var result_text = "[TestBot]Support information\n\n";
 
     // 結果テキストを作成
     for (var key in obj) {
