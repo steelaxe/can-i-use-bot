@@ -83,7 +83,7 @@ bot.add('/', [
 
             // Can I useの結果を表示
             var res = caniuse.getSupport(query, true);
-            session.endDialog(result_format(session, query, res));
+            session.endDialog(result_format(session, search_res[0], res));
 
 
         } else if (search_res.length >= 2) {
