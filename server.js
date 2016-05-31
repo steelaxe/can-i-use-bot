@@ -79,7 +79,7 @@ bot.add('/', [
     function (session) {
 
         // クエリーを成型
-        var query = session.message.text.replace(/^@\w+:\s+/, "").replace(/\s/g, "");
+        var query = session.message.text.replace(/^@\w+:\s+/, "").replace(/\s/g, "").replace(/\-/g,"").toLowerCase();
 
         // クエリーの文字数が3字以下ならばエラー
         if(query.length < 3){
