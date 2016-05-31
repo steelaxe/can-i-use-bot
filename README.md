@@ -1,5 +1,7 @@
 Can I use? bot
 ==========
+[![Gitter](https://badges.gitter.im/steelaxe/can-i-use-bot.svg)](https://gitter.im/steelaxe/can-i-use-bot?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
 This is a Slack integration which enables you to check browser support without visiting caniuse website.
 
 Demo
