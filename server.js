@@ -122,7 +122,7 @@ bot.add('/', [
 },
     function (session, results) {
 
-        var res = caniuse.getSupport(results.response.entity, true);
+        var res = caniuse.getSupport(results.response.entity.replace(/\-/g,""), true);
 
         // Can I useの結果を表示
         //        console.log(res);
