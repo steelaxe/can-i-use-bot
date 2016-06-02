@@ -18,16 +18,16 @@ var bot = new builder.BotConnectorBot(botConnectorOptions);
 
 function result_format(session, query, obj) {
 
-    var result_text = "[TestBot]Support information\n\n";
+    var result_text = "Support information\n\n";
 
     // 結果テキストを作成
     for (var key in obj) {
         if (obj.hasOwnProperty(key)) {
 
             if( 'y' in obj[key] ){
-                result_text += key + ": >= " + obj[key].y +"\n\n";
+                result_text += browser_name_from_key(key) + ": >= " + obj[key].y +"\n\n";
             }else if( 'a' in obj[key] ){
-                result_text += key + ": " + obj[key].a +" (Partial support)\n\n";
+                result_text += browser_name_from_key(key) + ": " + obj[key].a +" (Partial support)\n\n";
             }
 
         }
@@ -42,9 +42,6 @@ function result_format(session, query, obj) {
             "TitleLink": "http://caniuse.com/#search=" + query
         });
 
-    console.log("Message with attachments:");
-    console.log(msg);
-
     return msg;
 
 }
@@ -53,12 +50,36 @@ function result_format(session, query, obj) {
 
 // ************************************************
 
+var browsers_names = {
+    "and_chr": "Chrome for Android​",
+    "and_ff": "Firefox for Android​",
+    "and_uc": "UC Browser for Android​",
+    "android": "Android Browser",
+    "bb": "Blackberry Browser​",
+    "chrome": "Chrome​",
+    "edge": "Edge",
+    "firefox": "Firefox​",
+    "ie_mob": "IE Mobile​",
+    "ie": "IE​",
+    "ios_saf": "iOS Safari",
+    "op_mini": "Opera Mini",
+    "op_mob": "Opera Mobile",
+    "opera": "Opera​",
+    "safari": "Safari​"
+};
+
+function browser_name_from_key(key) {
+    return browsers_names[key] || key;
+}
+
+// ************************************************
+
 
 bot.add('/', [
     function (session) {
 
         // クエリーを成型
-        var query = session.message.text.replace(/^@\w+:\s+/, "").replace(/\s/g, "");
+        var query = session.message.text.replace(/^@\w+:\s+/, "").replace(/\s/g, "").replace(/\-/g,"").toLowerCase();
 
         // クエリーの文字数が3字以下ならばエラー
         if(query.length < 3){
@@ -66,12 +87,7 @@ bot.add('/', [
         }
 
         // 検索して候補を取得
-        console.log(session.message.text);
         var search_res = caniuse.find(query); // ヒット数が複数or0の場合、配列が。1つだけヒットの場合、文字型が返される。
-
-        console.log(search_res);
-        console.log(Array.isArray(search_res));
-        console.log("\nlengh:" + search_res.length);
 
         //debug用
         //session.send("query:"+query + ", search_res:"+search_res );
@@ -106,7 +122,7 @@ bot.add('/', [
 },
     function (session, results) {
 
-        var res = caniuse.getSupport(results.response.entity, true);
+        var res = caniuse.getSupport(results.response.entity.replace(/\-/g,""), true);
 
         // Can I useの結果を表示
         //        console.log(res);
