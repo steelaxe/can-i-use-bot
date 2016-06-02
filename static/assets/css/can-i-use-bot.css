@@ -49,6 +49,31 @@
 }
 
 
+.DiscussSection {
+    background-color: #1C335A;
+    text-align: center;
+    padding: 40px 0 80px 0;
+}
+
+.DiscussSection-heading {
+   font-size: 3.5rem;
+   color: #FFFFFF;
+   margin-bottom: 49px;
+}
+.DiscussSection-iframeWrap{
+    position: relative;
+    max-width: 885px;
+    padding-bottom: 56.25%;
+    margin: 0 auto;
+}
+.DiscussSection iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 .Footer{
     background-color: #3e92d2;
     color: #fff;
