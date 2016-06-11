@@ -24,10 +24,10 @@ function result_format(session, query, obj) {
     for (var key in obj) {
         if (obj.hasOwnProperty(key)) {
 
-            if( 'y' in obj[key] ){
-                result_text += browser_name_from_key(key) + ": >= " + obj[key].y +"\n\n";
-            }else if( 'a' in obj[key] ){
-                result_text += browser_name_from_key(key) + ": " + obj[key].a +" (Partial support)\n\n";
+            if ('y' in obj[key]) {
+                result_text += browser_name_from_key(key) + ": >= " + obj[key].y + "\n\n";
+            } else if ('a' in obj[key]) {
+                result_text += browser_name_from_key(key) + ": " + obj[key].a + " (Partial support)\n\n";
             }
 
         }
@@ -75,60 +75,90 @@ function browser_name_from_key(key) {
 // ************************************************
 
 
-bot.add('/', [
-    function (session) {
+var dialog = new builder.LuisDialog('https://api.projectoxford.ai/luis/v1/application?id=52278b56-81a5-4366-9a31-b3efc6f23cf0&subscription-key=7f74b882ccc8402aa7c770179f68ed02&q=');
 
-        // クエリーを成型
-        var query = session.message.text.replace(/^@\w+:\s+/, "").replace(/\s/g, "").replace(/\-/g,"").toLowerCase();
+bot.add('/', dialog);
 
-        // クエリーの文字数が3字以下ならばエラー
-        if(query.length < 3){
-            session.endDialog("Plz enter more than 3 characters! XP");
-        }
-
-        // 検索して候補を取得
-        var search_res = caniuse.find(query); // ヒット数が複数or0の場合、配列が。1つだけヒットの場合、文字型が返される。
-
-        //debug用
-        //session.send("query:"+query + ", search_res:"+search_res );
-
-        // 候補の数を調べる
-        if (search_res.length == 1) {
-
-            // ****候補が1つだけの時****
-
-            // Can I useの結果を表示
-            var res = caniuse.getSupport(query, true);
-            session.endDialog(result_format(session, search_res[0], res));
+dialog.on('feature only',
+    function (session, args) {
+        var f = builder.EntityRecognizer.findEntity(args.entities, 'feature');
+        session.send("'feature only' called.\n\nentityData: %s", JSON.stringify(f));
+    }
+);
 
 
-        } else if (search_res.length >= 2) {
+dialog.on('borwser only',
+    function (session, args) {
+        var f = builder.EntityRecognizer.findEntity(args.entities, 'feature');
+        session.send("'browser only' called.\n\nentityData: %s", JSON.stringify(f));
+    }
+);
 
-            // ****候補が複数ある時****
+dialog.on('feature and browser',
+    function (session, args) {
+        var f = builder.EntityRecognizer.findEntity(args.entities, 'feature');
+        session.send("'browser only' called.\n\nentityData: %s", JSON.stringify(f));
+    }
+);
 
-            // 候補を表示。選択肢を提示
-            //            console.log(search_res);
-            builder.Prompts.choice(session, "pick one.", search_res);
 
-        } else {
+dialog.onDefault(builder.DialogAction.send("I'm sorry. I didn't understand."));
 
-            // ****候補が0の時****
 
-            // 見つかりませんでした... XP
-            session.endDialog("sorry, not found... XP");
-
-        }
-
-},
-    function (session, results) {
-
-        var res = caniuse.getSupport(results.response.entity.replace(/\-/g,""), true);
-
-        // Can I useの結果を表示
-        //        console.log(res);
-        session.endDialog(result_format(session, results.response.entity, res));
-
-}]);
+//bot.add('/', [
+//    function (session) {
+//
+//        // クエリーを成型
+//        var query = session.message.text.replace(/^@\w+:\s+/, "").replace(/\s/g, "").replace(/\-/g,"").toLowerCase();
+//
+//        // クエリーの文字数が3字以下ならばエラー
+//        if(query.length < 3){
+//            session.endDialog("Plz enter more than 3 characters! XP");
+//        }
+//
+//        // 検索して候補を取得
+//        var search_res = caniuse.find(query); // ヒット数が複数or0の場合、配列が。1つだけヒットの場合、文字型が返される。
+//
+//        //debug用
+//        //session.send("query:"+query + ", search_res:"+search_res );
+//
+//        // 候補の数を調べる
+//        if (search_res.length == 1) {
+//
+//            // ****候補が1つだけの時****
+//
+//            // Can I useの結果を表示
+//            var res = caniuse.getSupport(query, true);
+//            session.endDialog(result_format(session, search_res[0], res));
+//
+//
+//        } else if (search_res.length >= 2) {
+//
+//            // ****候補が複数ある時****
+//
+//            // 候補を表示。選択肢を提示
+//            //            console.log(search_res);
+//            builder.Prompts.choice(session, "pick one.", search_res);
+//
+//        } else {
+//
+//            // ****候補が0の時****
+//
+//            // 見つかりませんでした... XP
+//            session.endDialog("sorry, not found... XP");
+//
+//        }
+//
+//},
+//    function (session, results) {
+//
+//        var res = caniuse.getSupport(results.response.entity.replace(/\-/g,""), true);
+//
+//        // Can I useの結果を表示
+//        //        console.log(res);
+//        session.endDialog(result_format(session, results.response.entity, res));
+//
+//}]);
 
 
 // Setup Restify Server
