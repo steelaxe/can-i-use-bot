@@ -87,3 +87,19 @@
 .Footer-profile{
     margin-bottom: 40px;
 }
+
+
+/* Bitcoin donate button */
+.COINWIDGETCOM_CONTAINER.COINWIDGETCOM_LIGHT > a {
+    background: #fff !important;
+    color: #2e2e2e;
+    display: inline-block;
+    border-radius: 7px;
+    border: 1px solid #d0d0d0;
+    padding: 10px 15px 10px 20px !important;
+    margin: 20px 0 0 0;
+}
+.COINWIDGETCOM_CONTAINER.COINWIDGETCOM_LIGHT > a:hover {
+    background: #ebebeb !important;
+}
+

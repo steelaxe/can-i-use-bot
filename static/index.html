@@ -30,11 +30,16 @@
 
     <section class="WelcomeSection">
         <h1 class="WelcomeSection-heading">Can I use? bot</h1>
-        <p class="WelcomeSection-lead">This is an unofficial bot of 'Can I use?'</p>
+        <p class="WelcomeSection-lead">This is an unofficial bot of 'Can I use?' for Slack</p>
+
         <!-- Place this tag where you want the button to render. -->
         <a class="github-button" href="https://github.com/steelaxe/can-i-use-bot/fork" data-icon="octicon-repo-forked" data-style="mega" data-count-href="/steelaxe/can-i-use-bot/network" data-count-api="/repos/steelaxe/can-i-use-bot#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Fork steelaxe/can-i-use-bot on GitHub">Fork</a>
         <!-- Place this tag where you want the button to render. -->
         <a class="github-button" href="https://github.com/steelaxe/can-i-use-bot" data-icon="octicon-star" data-style="mega" data-count-href="/steelaxe/can-i-use-bot/stargazers" data-count-api="/repos/steelaxe/can-i-use-bot#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star steelaxe/can-i-use-bot on GitHub">Star</a>
+
+
+        <div id="coinwidget-bitcoin-1AGsq6hB19yawsmRcwqnFWcwN3EaQjYnhB"></div>
+
     </section>
 
 
@@ -44,8 +49,7 @@
 
     <div class="AddSection">
         <h3 class="AddSection-heading">Let's improve your work,<br>Add to your Slack now!</h3>
-        <a href="https://slack.com/oauth/authorize?scope=incoming-webhook,bot&client_id=39170978977.46522048998&redirect_uri=https%3a%2f%2fslack.botframework.com%2fHome%2fauth&state=can-i-use-bot"
-           onclick="ga('send', 'event', 'trackingClick', 'click add button', 'click add button', {'nonInteraction': 1});">
+        <a href="https://slack.com/oauth/authorize?scope=incoming-webhook,bot&client_id=39170978977.46522048998&redirect_uri=https%3a%2f%2fslack.botframework.com%2fHome%2fauth&state=can-i-use-bot" onclick="ga('send', 'event', 'trackingClick', 'click add button', 'click add button', {'nonInteraction': 1});">
             <img height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x">
         </a>
     </div>
@@ -57,7 +61,7 @@
             <br>Then, please add to your slack! ;D</p>
     </div>
     <div class="DiscussSection">
-         <h3 class="DiscussSection-heading">If you want to Discuss...</h3>
+        <h3 class="DiscussSection-heading">If you want to Discuss...</h3>
         <div class="DiscussSection-iframeWrap">
             <iframe src="https://gitter.im/steelaxe/can-i-use-bot"></iframe>
         </div>
@@ -70,6 +74,8 @@
             <h2>Created by steelaxe</h2>
             <p>Our GitHub page is <a href="https://github.com/steelaxe/" target="_blank">here</a>.</p>
         </div>
+
+        <div id="coinwidget-bitcoin-1AGsq6hB19yawsmRcwqnFWcwN3EaQjYnhB"></div>
 
         <p><a href="./privacy.html">Bot privacy policy</a>
         </p>
@@ -94,6 +100,27 @@
         ga('send', 'pageview');
     </script>
 
+    <script src="//blockr.io/js_external/coinwidget/coin.js"></script>
+    <script>
+        CoinWidgetCom.go({
+            wallet_address: '1AGsq6hB19yawsmRcwqnFWcwN3EaQjYnhB',
+            currency: 'bitcoin',
+            counter: 'hide',
+            lbl_button: 'Bitcoin Donate',
+            lbl_count: 'donations',
+            lbl_amount: 'BTC',
+            lbl_address: 'Use address below to donate. Thanks!',
+            qrcode: true,
+            alignment: 'bl',
+            decimals: 8,
+            size: "big",
+            color: "light",
+            countdownFrom: "0",
+            element: "#coinwidget-bitcoin-1AGsq6hB19yawsmRcwqnFWcwN3EaQjYnhB",
+            onShow: function () {},
+            onHide: function () {}
+        });
+    </script>
 
 </body>
 
