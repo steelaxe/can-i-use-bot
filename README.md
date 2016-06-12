@@ -14,7 +14,7 @@ Add to Slack
 
 Donation
 --------
-![Bitcoin](http://www.caniuse-bot.com/images/bitcoin_logo.png)
+![Bitcoin](http://www.caniuse-bot.com/assets/images/bitcoin_logo.png)
 
 Bitcoin Address:
 1AGsq6hB19yawsmRcwqnFWcwN3EaQjYnhB
