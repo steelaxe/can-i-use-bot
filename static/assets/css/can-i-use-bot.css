@@ -1,14 +1,17 @@
 .WelcomeSection {
+    color: #fff;
     text-align: center;
     padding: 40px 0;
+    background-color: #e08143;
 }
 
 .WelcomeSection-heading {
     font-size: 8rem;
 }
-.WelcomeSection-lead{
+
+.WelcomeSection-lead {
     font-size: 2rem;
-    color: #7c7c7c;
+    margin-bottom: 40px;
 }
 
 .DemoSection {
@@ -27,30 +30,33 @@
     padding: 40px 0 60px 0;
     color: #fff;
 }
-.AddSection-heading{
+
+.AddSection-heading {
     margin-bottom: 40px;
     font-size: 5rem;
 }
-.Addsection-message{
+
+.Addsection-message {
     margin-top: 30px;
     font-size: 2rem;
 }
 
-.WebChatSection{
+.WebChatSection {
     text-align: center;
     background-color: #f2e8d5;
     padding: 40px 0;
     color: #835f48;
 }
-.WebChatSection-heading{
+
+.WebChatSection-heading {
     font-size: 3.5rem;
     margin-bottom: 49px;
 }
-.WebChatSection-message{
+
+.WebChatSection-message {
     font-size: 2rem;
     margin: 40px 0;
 }
-
 
 .DiscussSection {
     background-color: #1C335A;
@@ -59,17 +65,19 @@
 }
 
 .DiscussSection-heading {
-   font-size: 3.5rem;
-   color: #FFFFFF;
-   margin-bottom: 49px;
+    font-size: 3.5rem;
+    color: #FFFFFF;
+    margin-bottom: 49px;
 }
-.DiscussSection-iframeWrap{
+
+.DiscussSection-iframeWrap {
     position: relative;
     max-width: 885px;
     padding-bottom: 56.25%;
     margin: 0 auto;
 }
-.DiscussSection iframe{
+
+.DiscussSection iframe {
     position: absolute;
     top: 0;
     left: 0;
@@ -77,22 +85,23 @@
     height: 100%;
 }
 
-.Footer{
+.Footer {
     background-color: #3e92d2;
     color: #fff;
     text-align: center;
     padding: 40px 0;
 }
-.Footer a{
+
+.Footer a {
     color: #fff;
     text-decoration: underline;
 }
-.Footer-profile{
+
+.Footer-profile {
     margin-bottom: 40px;
 }
-
-
 /* Bitcoin donate button */
+
 .COINWIDGETCOM_CONTAINER.COINWIDGETCOM_LIGHT > a {
     background: #fff !important;
     color: #2e2e2e;
@@ -102,7 +111,7 @@
     padding: 10px 15px 10px 20px !important;
     margin: 20px 0 0 0;
 }
+
 .COINWIDGETCOM_CONTAINER.COINWIDGETCOM_LIGHT > a:hover {
     background: #ebebeb !important;
 }
-
