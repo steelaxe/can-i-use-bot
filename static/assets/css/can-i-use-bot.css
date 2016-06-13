@@ -31,7 +31,10 @@
     margin-bottom: 40px;
     font-size: 5rem;
 }
-
+.Addsection-message{
+    margin-top: 30px;
+    font-size: 2rem;
+}
 
 .WebChatSection{
     text-align: center;
