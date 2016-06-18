@@ -100,6 +100,18 @@
 .Footer-profile {
     margin-bottom: 40px;
 }
+
+
+/* Privacy Policy page */
+.page-pricacyPolicy{
+    background-color: #3e92d2;
+    color: #fff;
+}
+.page-pricacyPolicy a{
+    color: #fff;
+    text-decoration: underline;
+}
+
 /* Bitcoin donate button */
 
 .COINWIDGETCOM_CONTAINER.COINWIDGETCOM_LIGHT > a {
