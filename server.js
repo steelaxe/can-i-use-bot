@@ -77,6 +77,10 @@ function browser_name_from_key(key) {
 
 bot.add('/', [
     function (session) {
+        
+        if(session.message.text.indexOf("help") != -1){
+            session.endDialog("You can get support info from the Compatibility tables of HTML5, CSS3, SVG and other technologies in various browsers by saying any property name to the bot.\n For example, you may want to say 'flexbox' to the bot");
+        }
 
         // クエリーを成型
         var query = session.message.text.replace(/^@\w+:\s+/, "").replace(/\s/g, "").replace(/\-/g,"").toLowerCase();
