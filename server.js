@@ -79,7 +79,7 @@ bot.add('/', [
     function (session) {
 
 
-        if(session.message.indexOf("help") > 0){
+        if(session.message.text.indexOf("help") != -1){
             session.endDialog("You can get support info from the Compatibility tables of HTML5, CSS3, SVG and other technologies in various browsers by saying any property name to the bot.\n Ex. flexbox");
         }
         // クエリーを成型
