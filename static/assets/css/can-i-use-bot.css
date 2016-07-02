@@ -62,3 +62,14 @@
 .Footer-profile{
     margin-bottom: 40px;
 }
+
+.supportSection{
+    max-width: 980px;
+    margin: 40px auto;
+    background: #FFF;
+}
+
+.supportSection__item{
+    padding: 20px;
+    border-bottom: 1px solid #CCCCCC;
+}
