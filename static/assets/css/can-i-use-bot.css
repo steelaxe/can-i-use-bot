@@ -9,6 +9,13 @@
     font-size: 8rem;
 }
 
+.WelcomeSection-heading a:link,
+.WelcomeSection-heading a:hover,
+.WelcomeSection-heading a:visited{
+    color: #FFF;
+    text-decoration: none;
+}
+
 .WelcomeSection-lead {
     font-size: 2rem;
     margin-bottom: 40px;
