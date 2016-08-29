@@ -1,14 +1,13 @@
-Can I use? bot
+Can I use? bot for Slack
 ==========
 [![Gitter](https://badges.gitter.im/steelaxe/can-i-use-bot.svg)](https://gitter.im/steelaxe/can-i-use-bot?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-This is a Slack integration which enables you to check browser support without visiting caniuse website.
-
 ![Demo](http://www.caniuse-bot.com/assets/images/Demo.gif)
 
-Website
---------
+This is a Slack integration which enables you to check browser support without visiting caniuse website.
+
 [www.caniuse-bot.com](http://www.caniuse-bot.com/)
+
 
 Add to Slack
 --------
@@ -17,16 +16,16 @@ Add to Slack
 Credits
 --------
 
-##Main developer
+###Main developer
 
 * @okajax
 * @steelydylan
 
-##Contributer
+###Contributer
 
 * @leny
 
-##Libralies
+###Libralies
 
 * Can I use?
 * Microsoft Bot Framework
