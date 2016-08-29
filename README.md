@@ -2,11 +2,14 @@ Can I use? bot for Slack
 ==========
 [![Gitter](https://badges.gitter.im/steelaxe/can-i-use-bot.svg)](https://gitter.im/steelaxe/can-i-use-bot?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-![Demo](http://www.caniuse-bot.com/assets/images/Demo.gif)
-
 This is a Slack integration which enables you to check browser support without visiting caniuse website.
 
 [www.caniuse-bot.com](http://www.caniuse-bot.com/)
+
+Demo
+--------
+
+![Demo](http://www.caniuse-bot.com/assets/images/Demo.gif)
 
 
 Add to Slack
@@ -25,11 +28,11 @@ Credits
 
 * [@leny](https://github.com/leny)
 
-###Libraries
+###Powered by
 
 * [Can I use?](http://caniuse.com/)
-* Microsoft Bot Framework
-* caniuse-query
+* [Microsoft Bot Framework](https://dev.botframework.com/)
+* [caniuse-query](https://www.npmjs.com/package/caniuse-query)
 
 
 Donation
