@@ -9,7 +9,7 @@ This is a Slack integration which enables you to check browser support without v
 Demo
 --------
 
-<img src="http://www.caniuse-bot.com/assets/images/Demo.gif" alt="Demo" style="max-width: 600px;"/>
+<img src="http://www.caniuse-bot.com/assets/images/Demo.gif" alt="Demo" style="width: 600px;"/>
 
 
 Add to Slack
