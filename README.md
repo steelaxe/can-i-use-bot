@@ -18,16 +18,16 @@ Credits
 
 ###Main developer
 
-* @okajax
-* @steelydylan
+* [@okajax](https://github.com/okajax)
+* [@steelydylan](https://github.com/steelydylan)
 
 ###Contributer
 
-* @leny
+* [@leny](https://github.com/leny)
 
-###Libralies
+###Libraries
 
-* Can I use?
+* [Can I use?](http://caniuse.com/)
 * Microsoft Bot Framework
 * caniuse-query
 
